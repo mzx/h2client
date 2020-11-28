@@ -10,14 +10,17 @@ const routes = [
   {
     path: 'apply',
     component: ApplicantFormComponent,
+    data: {animation: 'apply'}
   },
   {
     path: 'list',
     component: DashboardComponent,
+    data: {animation: 'list'}
   },
   {
     path: 'history/:id',
     component: HistoryComponent,
+    data: {animation: 'history'}
   },
 
 ];

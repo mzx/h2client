@@ -52,7 +52,7 @@ export class ApplicantFormComponent {
   onSubmit = () => {
     this.submitDisabled = true;
     console.log(this.addressForm.value);
-    this.httpClient.post('http://localhost:5000/chaincode/acc/', this.addressForm.value).pipe(
+    this.httpClient.post('api/chaincode/acc/', this.addressForm.value).pipe(
       take(1),
       tap(() => this.matSnackBar.open('Created Successfully', null, {duration: 700})),
       tap(() => this.submitDisabled = false),

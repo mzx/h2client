@@ -17,7 +17,7 @@ export class HistoryComponent implements OnInit {
     this.id = this.route.paramMap.pipe(map(paramMap => paramMap.get('id')));
 
     this.history = this.id.pipe(switchMap(
-      id => httpClient.get(`http://localhost:5000/chaincode/acc/assetHistory/${id}`)
+      id => httpClient.get(`api/chaincode/acc/assetHistory/${id}`)
     ));
 
   }

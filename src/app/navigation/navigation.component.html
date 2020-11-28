@@ -9,7 +9,7 @@
       <a mat-list-item routerLink="list" routerLinkActive="active-link">Certifications</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content [@routeAnimations]="prepareRoute(outlet)">
     <mat-toolbar color="primary">
       <button
         type="button"
@@ -22,6 +22,6 @@
       <span>h2client</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <router-outlet></router-outlet>
+    <router-outlet #outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

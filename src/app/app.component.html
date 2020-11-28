@@ -1,1 +1,6 @@
 <app-navigation></app-navigation>
+
+<mat-progress-bar mode="buffer"
+  value="60" bufferValue="30"
+  *ngIf="showProgressbar" color="warn"
+  style="position: absolute;top: 0;left: 0;right: 0;z-index: 1000;height: 2px"></mat-progress-bar>

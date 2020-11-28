@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { slideInAnimation } from 'src/app/animations';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
+  animations: [slideInAnimation],
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
@@ -18,4 +21,7 @@ export class NavigationComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  prepareRoute(outlet: RouterOutlet): void {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
 }

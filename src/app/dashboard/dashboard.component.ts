@@ -23,7 +23,7 @@ export class DashboardComponent {
   all: Observable<Accreditation[]>;
 
   constructor(private httpClient: HttpClient, private matSnackBar: MatSnackBar, private router: Router) {
-    const allGet = httpClient.get<any>('http://localhost:5000/chaincode/acc').pipe(
+    const allGet = httpClient.get<any>('api/chaincode/acc').pipe(
       map(r => r.map(x => x.Record))
     );
 
@@ -32,7 +32,7 @@ export class DashboardComponent {
   }
 
   delete = ({ID}: Accreditation) => {
-    this.httpClient.delete(`http://localhost:5000/chaincode/acc/${ID}`).pipe(
+    this.httpClient.delete(`api/chaincode/acc/${ID}`).pipe(
       take(1),
       tap(() => this.matSnackBar.open('Deleted Successfully', null, {duration: 700})),
       tap(() => this.reload.next('reload')),
@@ -53,7 +53,7 @@ export class DashboardComponent {
   };
 
   private updateStatus = (acc: Accreditation, status: string) => {
-    this.httpClient.post(`http://localhost:5000/chaincode/acc/updateStatus`, {id: acc.ID, status}).pipe(
+    this.httpClient.post(`api/chaincode/acc/updateStatus`, {id: acc.ID, status}).pipe(
       take(1),
       tap(() => this.matSnackBar.open('Status Updated Successfully', null, {duration: 700})),
       tap(() => this.reload.next('reload')),
