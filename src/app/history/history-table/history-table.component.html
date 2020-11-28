@@ -1,0 +1,38 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let row">{{generateDate(row?.Timestamp?.seconds) | date:'medium'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let row">{{row?.Value?.Status}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="clinic">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Clinic</th>
+      <td mat-cell *matCellDef="let row">{{row?.Value?.Clinic}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="doctor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Doctor</th>
+      <td mat-cell *matCellDef="let row">{{row?.Value?.Doctor}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="speciality">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Speciality</th>
+      <td mat-cell *matCellDef="let row">{{row?.Value?.Speciality}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!--  <mat-paginator #paginator-->
+  <!--      [length]="dataSource?.data.length"-->
+  <!--      [pageIndex]="0"-->
+  <!--      [pageSize]="50"-->
+  <!--      [pageSizeOptions]="[25, 50, 100, 250]">-->
+  <!--  </mat-paginator>-->
+</div>

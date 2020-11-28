@@ -1,0 +1,44 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Create Accreditation Request</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Doctor Name" formControlName="doctorName">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Clinic</mat-label>
+            <mat-select formControlName="clinicName">
+              <mat-option *ngFor="let c of clinics" [value]="c">
+                {{c}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Speciality</mat-label>
+            <mat-select formControlName="speciality">
+              <mat-option *ngFor="let c of specialities" [value]="c">
+                {{c}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="addressForm.invalid || this.submitDisabled" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
