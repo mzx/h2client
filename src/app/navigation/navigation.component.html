@@ -10,16 +10,17 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content [@routeAnimations]="prepareRoute(outlet)">
-    <mat-toolbar color="primary">
+    <mat-toolbar>
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
+        style="margin-right: 12px"
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>h2client</span>
+      <span>H2 CLIENT</span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet #outlet></router-outlet>

@@ -4,7 +4,7 @@
     <mat-grid-tile *ngFor="let acc of all | async" [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
-          <mat-card-title  style="color: #c2185b">
+          <mat-card-title [style.color]="acc.Status === 'Failed' ? '#c2185b':'#18c2bc'">
             {{acc?.Status}}
           </mat-card-title>
           <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
@@ -36,15 +36,15 @@
           <mat-list>
             <mat-list-item>
               <mat-icon matListIcon>contact_page</mat-icon>
-              <span>{{acc.Doctor}}</span>
+              <span class="list-text">{{acc.Doctor}}</span>
             </mat-list-item>
             <mat-list-item>
               <mat-icon matListIcon>business</mat-icon>
-              <span>{{acc.Clinic}}</span>
+              <span class="list-text">{{acc.Clinic}}</span>
             </mat-list-item>
             <mat-list-item>
               <mat-icon matListIcon>medical_services</mat-icon>
-              <span>{{acc.Speciality}}</span>
+              <span class="list-text">{{acc.Speciality}}</span>
             </mat-list-item>
           </mat-list>
         </mat-card-content>
