@@ -1,6 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1">Accreditation Requests</h1>
-  <mat-grid-list cols="3" rowHeight="260px">
+  <mat-grid-list [cols]="colNum|async" rowHeight="260px">
     <mat-grid-tile *ngFor="let acc of all | async" [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
