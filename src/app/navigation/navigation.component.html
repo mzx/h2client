@@ -5,8 +5,8 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="apply" routerLinkActive="active-link">New Accreditation</a>
-      <a mat-list-item routerLink="list" routerLinkActive="active-link">Certifications</a>
+      <a mat-list-item routerLink="apply" routerLinkActive="active-link" (click)="drawer.close()">New Accreditation</a>
+      <a mat-list-item routerLink="list" routerLinkActive="active-link" (click)="drawer.close()">Certifications</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content [@routeAnimations]="prepareRoute(outlet)">

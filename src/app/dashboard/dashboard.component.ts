@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,13 +22,20 @@ export interface Accreditation {
 export class DashboardComponent {
   reload = new BehaviorSubject<any>('');
   all: Observable<Accreditation[]>;
+  colNum: Observable<number>;
 
-  constructor(private httpClient: HttpClient, private matSnackBar: MatSnackBar, private router: Router) {
+  constructor(private httpClient: HttpClient, private matSnackBar: MatSnackBar,
+              private breakpointObserver: BreakpointObserver,
+              private router: Router) {
     const allGet = httpClient.get<any>('api/chaincode/acc').pipe(
       map(r => r.map(x => x.Record))
     );
 
     this.all = this.reload.pipe(switchMap(() => allGet));
+
+    this.colNum = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+      map(({matches}) => matches ? 1 : 3)
+    );
 
   }
 
